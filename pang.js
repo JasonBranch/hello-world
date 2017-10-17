@@ -46,8 +46,4 @@ function keyPressed()
 
 
 
-
-  //} else {
-   // fill(255);
- // }
 }
