@@ -1,0 +1,40 @@
+// Jason Branch - Computer Vision Project
+var capture;
+var tracker
+var w = 700,
+    h = 500;
+
+function setup() {
+    capture = createCapture(VIDEO);
+    createCanvas(w, h);
+    capture.size(w, h);
+    capture.hide();
+
+
+
+    tracker = new clm.tracker();
+    tracker.init(pModel);
+    tracker.start(capture.elt);
+}
+
+function draw() {
+    image(capture, 0, 0, w, h);
+    var positions = tracker.getCurrentPosition();
+
+    
+
+    noStroke();
+    for (var i = 0; i < positions.length; i++) {
+        fill(map(i, 0, positions.length, 0, 360), 50, 100);
+        sphere(positions[i][0], [positionsi][1], 4, 4);
+    }
+
+    if (positions.length > 0) {
+        var mouthLeft = sphere(positions[44][0], positions[44][1]);
+        var mouthRight = sphere(positions[50][0], positions[50][1]);
+        var smile = mouthLeft.dist(mouthRight);
+        // would sphere(smile) create a line instead of a sphere by taking the distance?
+        
+
+    }
+}
